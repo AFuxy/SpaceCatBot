@@ -51,7 +51,7 @@ module.exports = {
         // }
     
         // sort the array alphabetically
-        games.sort();
+        //games.sort();
     
         // join the array into a string
         data = games.join('\n');
