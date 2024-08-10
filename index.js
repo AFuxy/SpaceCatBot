@@ -41,7 +41,7 @@ module.exports = {
                 gameStatus = "";
             }
             //add the game name and username to the array
-            games.push(`1. ${game}${gameUser}${gameStatus}`);
+            games.push(`- ${game}${gameUser}${gameStatus}`);
         }
 
         //without usernames
