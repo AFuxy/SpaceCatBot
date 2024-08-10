@@ -13,7 +13,15 @@ module.exports = {
         // get the list of games from suggestions.json
         let data = fs.readFileSync('./suggestions.json', 'utf8');
         data = JSON.parse(data);
-    
+        
+        let content = " # Welcome to the Game Recommendations Channel.\n\n"+
+        "Since Jonesy gets games suggested to her all the time, in the YT comments, on Twitch, and in the server, we've decided to get a list going.\n\n"+
+        "A few things to mention up top:\n\n"+
+        "Firstly, a game being on this list is NOT any guarantee it will be played. Jonesy gets to decide, not any of us.\n\n"+
+        "Secondly, this list is in no particular order, so no reading into anything.\n\n"+
+        "Finally, think about what sort of games Jonesy actually plays, either for content or in her own time, when making suggestions.\n\n"+
+        "To add a game, first check the list and then use the `/recommend` command by typing / followed by \"recommend\" and the name of the game.\n\n"+
+        "If you want to add any other comments, you can discuss the list in <#869527125764481085>";
 
         // create an array of the game names then add the username of the user who suggested the game
         // then join the array into a string
@@ -67,7 +75,7 @@ module.exports = {
                 return;
             }
 
-            suggestionMessage.edit({ embeds: [suggestionEmbed] });
+            suggestionMessage.edit({ content: content, embeds: [suggestionEmbed] });
         })
     }
 }
