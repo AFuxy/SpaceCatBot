@@ -58,8 +58,8 @@ module.exports = {
     
         const suggestionEmbed = new EmbedBuilder()
             .setColor(0x00FF00)
-            .setTitle('Suggestion')
-            .setDescription('Suggested games: \n' + data);
+            .setTitle('Games List')
+            .setDescription('Suggested so far: \n' + data);
         client.channels.cache.get(suggestionChannelId).messages.fetch(suggestionMessageId).then(message => {
             const suggestionMessage = message;
             if (!suggestionMessage) {
