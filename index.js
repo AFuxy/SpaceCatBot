@@ -4,7 +4,8 @@ const { Client, Collection, GatewayIntentBits, EmbedBuilder, Message } = require
 const config = require('./config.json');
 require('dotenv').config();
 
-const client = new Client({ intents: [GatewayIntentBits.Guilds] });
+const client = new Client({ intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages, GatewayIntentBits.MessageContent, GatewayIntentBits.GuildMembers] });
+
 
 module.exports = {
     updateList: async function() {
