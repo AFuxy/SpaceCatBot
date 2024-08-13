@@ -50,6 +50,10 @@ module.exports = {
                 gameStatus = "";
             }
             //add the game name and username to the array
+            //if the game is set to hide, don't add it to the array
+            if(data[game].hide == true){
+                continue;
+            }
             games.push(`- ${game}${gameUser}${gameStatus}`);
         }
 

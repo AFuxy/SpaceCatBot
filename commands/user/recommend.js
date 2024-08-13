@@ -21,19 +21,44 @@ module.exports = {
 
         //check if game has been recommended before in suggestions.json
         //lowercase the game name to make sure there is no duplicates
-        if (suggestions[recommend.toLowerCase()]) {
-            const embed = new EmbedBuilder()
-                .setColor(0xFF0000)
-                .setTitle('Sorry!')
-                .setDescription('This game has been recommended already.')
-                .setTimestamp()
-            await interaction.reply({ embeds: [embed], ephemeral: true });
-            return;
+        if(suggestions[recommend.toLowerCase()]) {
+            if(suggestions[recommend.toLowerCase()].status == "approved"){
+                const embed = new EmbedBuilder()
+                    .setColor(0xFF0000)
+                    .setTitle('Sorry!')
+                    .setDescription('Seems this game has already been approved.\nIt has probably been played already or is in the works.')
+                    .setTimestamp()
+                await interaction.reply({ embeds: [embed], ephemeral: true });
+                return;
+            }else if(suggestions[recommend.toLowerCase()].status == "denied"){
+                const embed = new EmbedBuilder()
+                    .setColor(0xFF0000)
+                    .setTitle('Sorry!')
+                    .setDescription('Seems this game has already been denied.\nSadly this means the game will not be played.')
+                    .setTimestamp()
+                await interaction.reply({ embeds: [embed], ephemeral: true });
+                return;
+            }else if(suggestions[recommend.toLowerCase()].hide == true){
+                const embed = new EmbedBuilder()
+                    .setColor(0xFF0000)
+                    .setTitle('Sorry!')
+                    .setDescription('This game has been hidden from the list.')
+                    .setTimestamp()
+                await interaction.reply({ embeds: [embed], ephemeral: true });
+                return;
+            }
+        const embed = new EmbedBuilder()
+            .setColor(0xFF0000)
+            .setTitle('Sorry!')
+            .setDescription('This game has been recommended already.')
+            .setTimestamp()
+        await interaction.reply({ embeds: [embed], ephemeral: true });
+        return;
         }else{
             try {
                 //update the suggestions.json with the game and the user who suggested it in the style
                 // {"GameName":{"userid": "userid", "status": null}}
-                suggestions[recommend.toLowerCase()] = { userid: interaction.user.id, status: null };
+                suggestions[recommend.toLowerCase()] = { userid: interaction.user.id, status: null, date: new Date(), hide: false };
                 fs.writeFileSync('./suggestions.json', JSON.stringify(suggestions));
                 const embed = new EmbedBuilder()
                     .setColor(0x00FF00)
