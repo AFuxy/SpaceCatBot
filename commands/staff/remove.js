@@ -33,7 +33,7 @@ module.exports = {
         const data = fs.readFileSync('./suggestions.json', 'utf8');
         const suggestions = JSON.parse(data);
         if (suggestions[game.toLowerCase()]) {
-            if(suggestions[game.toLowerCase()] == "staff test game"){
+            if(game.toLowerCase() == "staff test game"){
                 const embed = new EmbedBuilder()
                     .setColor(0xFF0000)
                     .setTitle(':) Hi')
