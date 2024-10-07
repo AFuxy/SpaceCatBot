@@ -47,13 +47,13 @@ module.exports = {
                 await interaction.reply({ embeds: [embed], ephemeral: true });
                 return;
             }
-        const embed = new EmbedBuilder()
-            .setColor(0xFF0000)
-            .setTitle('Sorry!')
-            .setDescription('This game has been recommended already.')
-            .setTimestamp()
-        await interaction.reply({ embeds: [embed], ephemeral: true });
-        return;
+            const embed = new EmbedBuilder()
+                .setColor(0xFF0000)
+                .setTitle('Sorry!')
+                .setDescription('This game has been recommended already.')
+                .setTimestamp()
+            await interaction.reply({ embeds: [embed], ephemeral: true });
+            return;
         }else{
             try {
                 //update the suggestions.json with the game and the user who suggested it in the style
@@ -67,16 +67,6 @@ module.exports = {
                     .setTimestamp()
 
                 await interaction.reply({ embeds: [embed], ephemeral: true });
-
-                // let suggestionUpdate = suggestions[recommend] = interaction.user.id;
-                // fs.writeFileSync('./suggestions.json', JSON.stringify(suggestions));
-                // const embed = new EmbedBuilder()
-                //     .setColor(0x00FF00)
-                //     .setTitle('Success!')
-                //     .setDescription('Thank you for recommending ' + recommend)
-                //     .setTimestamp()
-
-                // await interaction.reply({ embeds: [embed], ephemeral: true });
                 index.updateList();
             } catch (error) {
                 console.error(error);

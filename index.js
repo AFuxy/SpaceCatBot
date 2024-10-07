@@ -1,6 +1,6 @@
 const fs = require('node:fs');
 const path = require('node:path');
-const { Client, Collection, GatewayIntentBits, EmbedBuilder, Message } = require('discord.js');
+const { Client, Collection, GatewayIntentBits, EmbedBuilder, Message, PermissionsBitField } = require('discord.js');
 const config = require('./config.json');
 require('dotenv').config();
 
